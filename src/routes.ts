@@ -1,18 +1,21 @@
-import { Router } from 'express';
+import { Router } from "express";
 import {
   getTasks,
   getTaskById,
   createTask,
   updateTask,
   deleteTask,
-} from './taskController';
+} from "./taskController";
 
 const router = Router();
 
-router.get('/tasks', getTasks);
-router.get('/tasks/:id', getTaskById);
-router.post('/tasks', createTask);
-router.put('/tasks/:id', updateTask);
-router.delete('/tasks/:id', deleteTask);
+router.get("/ping", (req, res) => {
+  res.json({ pong: "Pong!" });
+});
+router.get("/tasks", getTasks);
+router.get("/tasks/:id", getTaskById);
+router.post("/tasks", createTask);
+router.put("/tasks/:id", updateTask);
+router.delete("/tasks/:id", deleteTask);
 
 export default router;
