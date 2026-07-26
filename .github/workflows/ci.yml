@@ -11,8 +11,6 @@ on: # quando eu tiver um push
       - "tsconfig.json"
       - "test/**"
       - ".github/workflows/ci.yml"
-    paths-ignore: # items que ele vai ignorar para rodar o workflow
-      - "README.md"
 
 env:
   PORT: ${{ vars.PORT }}
