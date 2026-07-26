@@ -1,4 +1,4 @@
-[ITEM EDITADO] 2.0
+![CI](https://github.com/ivan-teotonio/example-ci-cd/actions/workflows/ci.yml/badge.svg?branch=develop)
 
 # b7cicd-example
 
