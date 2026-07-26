@@ -1,0 +1,53 @@
+name: CI
+
+on: # quando eu tiver um push
+  pull_request: # quando eu tiver um pull request
+    branches:
+      - develop
+    paths: # items que ele vai observar para rodar o workflow
+      - "src/**"
+      - "package.json"
+      - "package-lock.json"
+      - "tsconfig.json"
+      - "test/**"
+      - ".github/workflows/ci.yml"
+
+env:
+  PORT: ${{ vars.PORT }}
+  API_TOKEN: ${{ secrets.API_TOKEN }}
+
+jobs:
+  test:
+    runs-on: ubuntu-latest # test roda nessa máquina virtual
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4 # checkout do código
+
+      - name: Instala o node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Instala as dependências
+        run: npm install
+
+      - name: Roda os testes
+        run: npm test
+
+  build:
+    runs-on: ubuntu-latest
+    needs: test # significa que o build só vai rodar se o test passar
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Instala o node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Instala as dependências
+        run: npm install
+
+      - name: Build do projeto
+        run: npm run build

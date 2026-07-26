@@ -1,4 +1,5 @@
-[ITEM EDITADO]
+[ITEM EDITADO] 2.0
+
 # b7cicd-example
 
 API REST de tarefas em **Express + TypeScript** usada como projeto base do curso **Fundamentos de CI/CD**.
@@ -28,40 +29,43 @@ A API ficará disponível em `http://localhost:3000`.
 
 ## Scripts disponíveis
 
-| Comando             | O que faz                                      |
-|---------------------|------------------------------------------------|
-| `npm start`         | Compila e sobe a aplicação                     |
-| `npm run dev`       | Sobe em modo watch (sem precisar compilar)     |
-| `npm run build`     | Compila o TypeScript para a pasta `dist/`      |
-| `npm test`          | Roda os testes                                 |
-| `npm run lint`      | Verifica o código com ESLint                   |
-| `npm run typecheck` | Verifica os tipos sem compilar (`tsc --noEmit`)|
+| Comando             | O que faz                                       |
+| ------------------- | ----------------------------------------------- |
+| `npm start`         | Compila e sobe a aplicação                      |
+| `npm run dev`       | Sobe em modo watch (sem precisar compilar)      |
+| `npm run build`     | Compila o TypeScript para a pasta `dist/`       |
+| `npm test`          | Roda os testes                                  |
+| `npm run lint`      | Verifica o código com ESLint                    |
+| `npm run typecheck` | Verifica os tipos sem compilar (`tsc --noEmit`) |
 
 ---
 
 ## Endpoints
 
 ### `GET /tasks`
+
 Retorna todas as tarefas.
 
 **Response `200`**
+
 ```json
-[
-  { "id": 1, "title": "Estudar CI/CD", "done": false }
-]
+[{ "id": 1, "title": "Estudar CI/CD", "done": false }]
 ```
 
 ---
 
 ### `GET /tasks/:id`
+
 Retorna uma tarefa pelo ID.
 
 **Response `200`**
+
 ```json
 { "id": 1, "title": "Estudar CI/CD", "done": false }
 ```
 
 **Response `404`**
+
 ```json
 { "error": "Task not found" }
 ```
@@ -69,19 +73,23 @@ Retorna uma tarefa pelo ID.
 ---
 
 ### `POST /tasks`
+
 Cria uma nova tarefa.
 
 **Body**
+
 ```json
 { "title": "Configurar pipeline" }
 ```
 
 **Response `201`**
+
 ```json
 { "id": 2, "title": "Configurar pipeline", "done": false }
 ```
 
 **Response `400`** (título ausente ou vazio)
+
 ```json
 { "error": "Title is required" }
 ```
@@ -89,14 +97,17 @@ Cria uma nova tarefa.
 ---
 
 ### `PUT /tasks/:id`
+
 Atualiza o título e/ou o status de uma tarefa.
 
 **Body** (todos os campos são opcionais)
+
 ```json
 { "title": "Novo título", "done": true }
 ```
 
 **Response `200`**
+
 ```json
 { "id": 2, "title": "Novo título", "done": true }
 ```
@@ -104,11 +115,13 @@ Atualiza o título e/ou o status de uma tarefa.
 ---
 
 ### `DELETE /tasks/:id`
+
 Remove uma tarefa.
 
 **Response `204`** — sem corpo
 
 **Response `404`**
+
 ```json
 { "error": "Task not found" }
 ```

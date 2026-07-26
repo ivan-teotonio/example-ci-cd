@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "API de tarefas usada como projeto base do curso Fundamentos de CI/CD",
   "main": "dist/index.js",
+  "type": "module",
   "scripts": {
     "start": "npm run build && node dist/index.js",
     "dev": "tsx watch src/index.ts",
