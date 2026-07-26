@@ -4,6 +4,19 @@ on: # quando eu tiver um push
   pull_request: # quando eu tiver um pull request
     branches:
       - develop
+    paths: # items que ele vai observar para rodar o workflow
+      - "src/**"
+      - "package.json"
+      - "package-lock.json"
+      - "tsconfig.json"
+      - "test/**"
+      - ".github/workflows/ci.yml"
+    paths-ignore: # items que ele vai ignorar para rodar o workflow
+      - "README.md"
+
+env:
+  PORT: ${{ vars.PORT }}
+  API_TOKEN: ${{ secrets.API_TOKEN }}
 
 jobs:
   test:
